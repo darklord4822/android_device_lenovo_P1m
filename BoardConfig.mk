@@ -1,6 +1,10 @@
 # inherit from the proprietary version
 -include vendor/lenovo/P1m/BoardConfigVendor.mk
 
+
+# Disable NINJA
+USE_NINJA := false
+
 # GPS
 TARGET_SPECIFIC_HEADER_PATH := device/lenovo/P1m/include
 
@@ -96,8 +100,8 @@ MTK_HARDWARE := true
 #COMMON_GLOBAL_CFLAGS += -DMTK_HARDWARE -DADD_LEGACY_ACQUIRE_BUFFER_SYMBOL
 #COMMON_GLOBAL_CPPFLAGS += -DMTK_HARDWARE
 
-# Offline charging
-BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/BOOT/BOOT/boot/boot_mode
+# Charger
+BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 
 # RIL
 BOARD_RIL_CLASS := ../../../device/lenovo/P1m/ril/

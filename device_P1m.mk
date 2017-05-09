@@ -68,13 +68,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/hostapd/hostapd.accept:system/etc/hostapd/hostapd.accept \
     $(LOCAL_PATH)/configs/hostapd/hostapd.deny:system/etc/hostapd/hostapd.deny
 
-# Bluetooth
-# Disable it, because it uses libbluetoothdrv.so, scheme to access from MT6580,
-# that not exists in MT6735M.
-
-#PRODUCT_PACKAGES += \
-#    libbt-vendor
-
 # RIL
 #PRODUCT_PACKAGES += \
 #    gsm0710muxd \
@@ -138,6 +131,10 @@ PRODUCT_COPY_FILES += \
 # USB
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
+    
+# Charger Mode
+PRODUCT_PACKAGES += \
+    charger_res_images
 
 # Torch
 PRODUCT_PACKAGES += \

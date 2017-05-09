@@ -11,9 +11,6 @@ cd ..
 cd system/sepolicy
 git apply -v --check ../../device/lenovo/P1m/patches/0003-Revert-back-to-policy-version-29.patch
 cd ../..
-cd packages/apps/Settings
-git apply -v --check ../../../device/lenovo/P1m/patches/0005-add-author-info-in-device-info.patch
-cd ../../..
 cd frameworks/av
 git apply -v --check ../../device/lenovo/P1m/patches/0006-fix-access-wvm-to-ReadOptions.patch
 git apply -v --check ../../device/lenovo/P1m/patches/0007-Disable-usage-of-get_capture_position.patch

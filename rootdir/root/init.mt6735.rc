@@ -14,6 +14,10 @@ import init.trustonic.rc
 import init.modem.rc
 import init.target.rc
 
+on early-init
+    # Turn off backlight on blank
+    write /sys/class/leds/lcd-backlight/trigger "backlight"
+
 on init
     # export LD_SHIM_LIBS "/system/vendor/lib/libwvm.so|libshims_wvm.so:/system/lib/hw/camera.mt6735m.so|libshims_camera.so:/system/lib/libcam.client.so|libshims_camera.so:/system/lib/libcam_utils.so|libshims_camera.so:/system/lib/libgui.so|libshims_camera.so:/system/lib/libmtk_mmutils.so|libshims_camera.so"
     # export LD_SHIM_LIBS /system/vendor/lib/libwvm.so|libshims_wvm.so
@@ -61,11 +65,6 @@ on init
     mkdir /mnt/media_rw/usbotg 0700 media_rw media_rw
     mkdir /storage/usbotg 0700 root root
 # mount different fs start
-
-on charger
-    mount ext4 /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/system /system ro wait
-    start kpoc_charger
-    start servicemanager
 
 on fs
     write /proc/bootprof "INIT:Mount_START"
@@ -1485,8 +1484,11 @@ on property:persist.service.operamax=1
 on property:persist.service.operamax=0
     stop OperaMaxSystem
 
-service kpoc_charger /system/bin/kpoc_charger
+# Charger
+service charger /sbin/healthd -c
     class charger
+    critical
+    seclabel u:r:healthd:s0
 
 ###########add for 3Gdongle
 
