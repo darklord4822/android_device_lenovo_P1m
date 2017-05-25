@@ -36,12 +36,15 @@ PRODUCT_PACKAGES += \
     libxlog
 
 # Audio
-#PRODUCT_PACKAGES += \
-#    audio.primary.mt6735m \
-#    audio_policy.default \
-#    audio.a2dp.default \
-#    audio.usb.default \
-#    audio.r_submix.default
+PRODUCT_PACKAGES += \
+    audio.a2dp.default \
+    audio.r_submix.default \
+    libaudiopolicymanagerdefault \
+    libtinyalsa \
+    libtinycompress \
+    libtinymix \
+    libtinyxml \
+    libfs_mgr
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -66,15 +69,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
     $(LOCAL_PATH)/configs/hostapd/hostapd.accept:system/etc/hostapd/hostapd.accept \
     $(LOCAL_PATH)/configs/hostapd/hostapd.deny:system/etc/hostapd/hostapd.deny
-
-# RIL
-#PRODUCT_PACKAGES += \
-#    gsm0710muxd \
-#    gsm0710muxdmd2 \
-#    mtkrild \
-#    mtkrildmd2 \
-#    mtk-ril \
-#    mtk-rilmd2
 
 # Telecomm
 PRODUCT_COPY_FILES += \
@@ -142,9 +136,7 @@ PRODUCT_PACKAGES += \
 # FM Radio (disabled in this build)
 PRODUCT_PACKAGES += \
     FMRadio \
-    libfmjni \
-    libfmcust \
-    libmtkplayer
+    libfmjni
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/fmr/mt6627_fm_cust.cfg:system/etc/fmr/mt6627_fm_cust.cfg

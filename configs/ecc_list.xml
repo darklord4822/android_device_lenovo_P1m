@@ -17,4 +17,7 @@
     <EccEntry Ecc="118" Category="0" Condition="0" />
     <EccEntry Ecc="119" Category="0" Condition="0" />
     <EccEntry Ecc="999" Category="0" Condition="0" />
+    <EccEntry Ecc="100" Category="0" Condition="2" />
+    <EccEntry Ecc="101" Category="0" Condition="2" />
+    <EccEntry Ecc="102" Category="0" Condition="2" />
 </EccTable>
