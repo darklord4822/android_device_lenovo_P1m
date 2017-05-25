@@ -54,7 +54,7 @@ on init
 
     mkdir /mnt/cd-rom 0000 system system
 
-# Change ION driver permission [+] Decker
+# Change ION driver permission
     chmod 0777 /dev/ion
 
 # change lk_env permission

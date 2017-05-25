@@ -20,7 +20,6 @@ persist.gemini.sim_num=2 \
 ril.current.share_modem=2 \
 ro.mtk_gps_support=1 \
 ro.mtk_agps_app=1 \
-persist.debug.xlog.enable=1 \
 persist.sys.display.clearMotion=0 
 
 # The gps config appropriate for this device

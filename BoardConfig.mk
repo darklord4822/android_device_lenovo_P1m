@@ -107,6 +107,9 @@ BOARD_HARDWARE_CLASS := device/lenovo/P1m/cmhw
 # Charger
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 
+# SU
+WITH_SU := true
+
 # RIL
 BOARD_RIL_CLASS := ../../../device/lenovo/P1m/ril/
 

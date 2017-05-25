@@ -37,6 +37,7 @@ wifi.direct.interface=p2p0
 # audio
 ro.camera.sound.forced=0
 ro.audio.silent=0
+fmradio.driver.enable=1
 
 ro.zygote.preload.enable=0
 
@@ -61,12 +62,8 @@ persist.sys.timezone = Europe/Moscow
 #persist.sys.isUsbOtgEnabled=true
 
 ro.mtk_perfservice_support=1
-
-persist.logd.logpersistd=logcatd
-
 ro.telephony.default_network=9
 
 # ClearMotion
 persist.sys.display.clearMotion=0
 # ro.mtk_clearmotion_support=1
-fmradio.driver.enable=1
