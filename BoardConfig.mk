@@ -164,4 +164,7 @@ BOARD_SEPOLICY_DIRS := \
 # Use old sepolicy version
 POLICYVERS := 29
 
+# Seccomp filter
+BOARD_SECCOMP_POLICY := $(LOCAL_PATH)/seccomp
+
 TARGET_LDPRELOAD += libxlog.so:libmtk_symbols.so # for symbols in mtkaudio.cpp + mtksymbols

@@ -12,7 +12,6 @@ import init.volte.rc
 import init.epdg.rc
 import init.trustonic.rc
 import init.modem.rc
-import init.target.rc
 
 on early-init
     # Turn off backlight on blank
@@ -237,7 +236,7 @@ on post-fs-data
     chmod 0640 /dev/mtk_cmdq
     chown system system /dev/mtk_cmdq
 
-    #OFFLOAD SERVICE
+    # OFFLOAD SERVICE
     chmod 0640 /dev/offloadservice
     chown media media /dev/offloadservice
 
@@ -246,22 +245,13 @@ on post-fs-data
     chmod 0660 /dev/msensor
     chmod 0660 /dev/gsensor
     chmod 0660 /dev/als_ps
-    chmod 0660 /dev/hall
     chmod 0660 /dev/gyroscope
     chmod 0660 /dev/aal_als
-
-    chmod 0660 /sys/devices/platform/msensor/driver/cpsopmode
-    chmod 0660 /sys/devices/platform/msensor/driver/cpsreptxy
-    chmod 0660 /sys/devices/platform/msensor/driver/cpsreptz
-    chmod 0660 /sys/devices/platform/gsensor/driver/cpsopmode
-    chmod 0660 /sys/devices/platform/gsensor/driver/cpsrange
-    chmod 0660 /sys/devices/platform/gsensor/driver/cpsbandwidth
 
     chown system system /dev/hwmsensor
     chown system system /dev/msensor
     chown system system /dev/gsensor
     chown radio system /dev/als_ps
-    chown system system /dev/hall
     chown system system /dev/gyroscope
     chown system system /dev/aal_als
 
@@ -316,40 +306,19 @@ on post-fs-data
     chmod 0660 /sys/class/misc/m_alsps_misc/alsdelay
     chmod 0660 /sys/class/misc/m_alsps_misc/alsbatch
     chmod 0660 /sys/class/misc/m_alsps_misc/alsflush
-
-    /*dixiaobing@wind-mobi.com 20150629 start*/
-    chmod 0660 /sys/class/misc/m_alsals_misc/alsactive
-    chmod 0660 /sys/class/misc/m_alsals_misc/alsdelay
-    chmod 0660 /sys/class/misc/m_alsals_misc/alsbatch
-    chmod 0660 /sys/class/misc/m_alsals_misc/alsflush
-    /*dixiaobing@wind-mobi.com 20150629 end*/
     chmod 0660 /sys/class/misc/m_alsps_misc/psactive
     chmod 0660 /sys/class/misc/m_alsps_misc/psdelay
     chmod 0660 /sys/class/misc/m_alsps_misc/psbatch
     chmod 0660 /sys/class/misc/m_alsps_misc/psflush
-    #dixiaobing@wind-mobi.com 20150525 start
-    chmod 0660 /sys/class/misc/m_alsps_misc/nonwakeupps
-    #dixiaobing@wind-mobi.com 20150525 end
-    
     chown system system /sys/class/misc/m_alsps_misc/alsactive
     chown system system /sys/class/misc/m_alsps_misc/alsdelay
     chown system system /sys/class/misc/m_alsps_misc/alsbatch
     chown system system /sys/class/misc/m_alsps_misc/alsflush
-    
-    /*dixiaobing@wind-mobi.com 20150629 start*/
-    chown system system /sys/class/misc/m_alsals_misc/alsactive
-    chown system system /sys/class/misc/m_alsals_misc/alsdelay
-    chown system system /sys/class/misc/m_alsals_misc/alsbatch
-    chown system system /sys/class/misc/m_alsals_misc/alsflush
-    /*dixiaobing@wind-mobi.com 20150629 end*/
     chown system system /sys/class/misc/m_alsps_misc/psactive
     chown system system /sys/class/misc/m_alsps_misc/psdelay
     chown system system /sys/class/misc/m_alsps_misc/psbatch
     chown system system /sys/class/misc/m_alsps_misc/psflush
-    #dixiaobing@wind-mobi.com 20150525 start
-    chown system system /sys/class/misc/m_alsps_misc/nonwakeupps
-    #dixiaobing@wind-mobi.com 20150525 end
- 
+
     chmod 0660 /sys/class/misc/m_baro_misc/baroenablenodata
     chmod 0660 /sys/class/misc/m_baro_misc/baroactive
     chmod 0660 /sys/class/misc/m_baro_misc/barodelay
@@ -360,21 +329,6 @@ on post-fs-data
     chown system system /sys/class/misc/m_baro_misc/barodelay
     chown system system /sys/class/misc/m_baro_misc/barobatch
     chown system system /sys/class/misc/m_baro_misc/baroflush
-	
-	#dixiaobing@wind-mobi.com 20150525 start
-	#ps cali
-	chown system system /sys/class/meizu/ps/ps_calibration
-	chown system system /sys/class/meizu/ps/ps_offset
-	
-	#acc cali
-	chown system system /sys/class/meizu/acc/acc_calibration
-	chown system system /sys/class/meizu/acc/acc_x_offset
-	chown system system /sys/class/meizu/acc/acc_y_offset
-	chown system system /sys/class/meizu/acc/acc_z_offset
-	#dixiaobing@wind-mobi.com 20150525 end
-    #duanzhanyang@wind-mobi.com 20150620 begin
-	chown system system /sys/devices/mx_leds/leds_mode
-	#duanzhanyang@wind-mobi.com 20150620 end
 
     #Accdet
     chown root radio /sys/devices/platform/Accdet_Driver/driver/accdet_call_state
@@ -401,11 +355,11 @@ on post-fs-data
     chown radio system /sys/devices/platform/mt-pmic/low_battery_protect_stop
     chown radio system /sys/devices/platform/mt-pmic/low_battery_protect_ut
 
-    mkdir /data/amit/ 0770 system system
-		mkdir /data/misc/sensor 0774 system system
+    mkdir /data/amit 0770 system system
+    mkdir /data/misc/sensor 0774 system system
     mkdir /data/misc/akmd 0770 system system
     mkdir /data/misc/s62x 0771 compass compass
-    mkdir /data/acdapi/ 0770 system system
+    mkdir /data/acdapi 0770 system system
     chmod 0666 /data/misc/acdapi/calib.dat
     chmod 0666 /data/misc/acdapi/param.dat
     chmod 0666 /data/misc/acdapi/sensors.dat
@@ -416,46 +370,6 @@ on post-fs-data
     chown system /sys/devices/platform/gsensor/driver/cpsrange
     mkdir	/data/data/mcube 0664 system system
 
-    chown system /sys/class/input/input1/enable
-    chown system /sys/class/input/input1/delay
-    chown system /sys/class/input/input1/wake
-    chown system /sys/class/input/input1/offsets
-    chown system /sys/class/input/input2/enable
-    chown system /sys/class/input/input2/delay
-    chown system /sys/class/input/input2/wake
-    chown system /sys/class/input/input2/offsets
-    chown system /sys/class/input/input3/enable
-    chown system /sys/class/input/input3/delay
-    chown system /sys/class/input/input3/wake
-    chown system /sys/class/input/input3/offsets
-    chown system /sys/class/input/input4/enable
-    chown system /sys/class/input/input4/delay
-    chown system /sys/class/input/input4/wake
-    chown system /sys/class/input/input4/offsets
-    chown system /sys/class/input/input5/enable
-    chown system /sys/class/input/input5/delay
-    chown system /sys/class/input/input5/wake
-    chown system /sys/class/input/input5/offsets
-    chown system /sys/class/input/input6/enable
-    chown system /sys/class/input/input6/delay
-    chown system /sys/class/input/input6/wake
-    chown system /sys/class/input/input6/offsets
-    chown system /sys/class/input/input7/enable
-    chown system /sys/class/input/input7/delay
-    chown system /sys/class/input/input7/wake
-    chown system /sys/class/input/input7/offsets
-    chown system /sys/class/input/input8/enable
-    chown system /sys/class/input/input8/delay
-    chown system /sys/class/input/input8/wake
-    chown system /sys/class/input/input8/offsets
-    chown system /sys/class/input/input9/enable
-    chown system /sys/class/input/input9/delay
-    chown system /sys/class/input/input9/wake
-    chown system /sys/class/input/input9/offsets
-    chown system /sys/class/input/input10/enable
-    chown system /sys/class/input/input10/delay
-    chown system /sys/class/input/input10/wake
-    chown system /sys/class/input/input10/offsets
 
     #EM eint
     chown root diag /sys/bus/platform/drivers/eint/current_eint
@@ -532,7 +446,7 @@ on post-fs-data
     chown bluetooth bluetooth /data/@btmtk/dev_cache
     chown bluetooth bluetooth /dev/hid-keyboard
     chmod 0660 /dev/hid-keyboard
-    #Use uinput's default permission
+    # Use uinput's default permission
     chown system net_bt_admin /dev/uinput
 
     # UIBC
@@ -686,8 +600,6 @@ on boot
     write /proc/sys/vm/dirty_writeback_centisecs 300
     chmod 0660 /sys/power/autosleep
 
-    chmod 0664 /sys/class/leds/lcd-backlight/brightness
-
     chown system system /sys/devices/system/cpu/cpufreq/hotplug/cpu_num_base
     chmod 0660 /sys/devices/system/cpu/cpufreq/hotplug/cpu_num_base
     chown root   system /sys/kernel/debug/binder/transaction_log_enable
@@ -696,6 +608,7 @@ on boot
     chown system /sys/module/mlog/parameters/do_mlog
     chown system /sys/module/mlog/parameters/timer_intval
 
+    chmod 0664 /sys/class/leds/lcd-backlight/brightness
     chown root   radio  /sys/class/leds/lcd-backlight/duty
     chown root   radio  /sys/class/leds/lcd-backlight/div
     chown system system /sys/class/leds/lcd-backlight/trigger
@@ -703,8 +616,14 @@ on boot
     chown system system /sys/class/leds/keyboard-backlight/trigger
     chown system system /sys/class/leds/jogball-backlight/trigger
     chown system system /sys/class/leds/red/trigger
+    chown system system /sys/class/leds/red/delay_on
+    chown system system /sys/class/leds/red/delay_off
     chown system system /sys/class/leds/green/trigger
+    chown system system /sys/class/leds/green/delay_on
+    chown system system /sys/class/leds/green/delay_off
     chown system system /sys/class/leds/blue/trigger
+    chown system system /sys/class/leds/blue/delay_on
+    chown system system /sys/class/leds/blue/delay_off
 
     # Permission for hibernation
     chown radio system /sys/power/tuxonice
@@ -717,7 +636,7 @@ on boot
     chown system system /sys/power/sb_state
     chmod 0660 /sys/power/sb_state
 
-# HMP CPU hotplug strategy
+    # HMP CPU hotplug strategy
     chown system system /proc/hps/num_base_perf_serv
     chmod 0660 /proc/hps/num_base_perf_serv
     chown system system /proc/hps/num_limit_power_serv
@@ -729,7 +648,7 @@ on boot
     chown system system /proc/hps/up_threshold
     chmod 0660 /proc/hps/up_threshold
 
-# CPU freq
+    # CPU freq
     chown system system /proc/cpufreq/cpufreq_limited_by_hevc
     chmod 0660 /proc/cpufreq/cpufreq_limited_by_hevc
     chown system system /proc/cpufreq/cpufreq_limited_max_freq_by_user
@@ -759,7 +678,7 @@ on boot
     chown root radio /proc/net/netfilter/nfnetlink_log
     chown root radio /proc/net/netfilter/nfnetlink_queue
 
-# WMT proc
+    # WMT proc
     chown shell system /proc/driver/wmt_dbg
     chown shell system /proc/driver/wmt_aee
 
@@ -783,12 +702,7 @@ on property:ro.board.platform=mt6753
     chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
     write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1300000
 
-on property:ro.board.platform=mt6737t
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
-    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
-    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1300000
-
-on property:ro.board.platform=mt6737m
+on property:ro.board.platform=mt6735m
     chown system system /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
     chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
     write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 988000
@@ -842,11 +756,6 @@ service start_modem /system/bin/md_ctrl 1
 ## mtk printk uart controller
 on property:persist.uartconsole.enable=1
     write /proc/mtprintk 1
-
-# Update the second boot logo
-service bootlogoupdater /system/bin/boot_logo_updater
-    class core
-    oneshot
 
 service mobile_log_d /system/bin/mobile_log_d
     class main
@@ -926,17 +835,6 @@ service pq /system/bin/pq
     group system graphics
     oneshot
 
-service aal /system/bin/aal
-    class main
-    user system
-    group system graphics
-
-# FOTA upgrade
-service rbfota /system/bin/fota1
-    class main
-    disabled
-    oneshot
-
 #
 # MTK Wi-Fi related services (Begin)
 #
@@ -975,11 +873,6 @@ service wpa_supplicant /system/bin/wpa_supplicant \
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
     oneshot
-# For WiFi High Speed calibration
-service autokd /system/bin/autokd
-    class core
-    user system
-    group system
 
 #
 # MTK Wi-Fi related services (End)
@@ -995,14 +888,14 @@ service dhcpcd_bt-pan /system/bin/dhcpcd -BK -dd
 
 
 
-service dhcpcd_wlan0 /system/bin/dhcpcd -ABKLG -dd
+service dhcpcd_wlan0 /system/bin/dhcpcd -aABDKL
     class main
 	user root
 	group net_admin net_raw
     disabled
     oneshot
 
-service dhcpcd_p2p /system/bin/dhcpcd -BK -dd
+service dhcpcd_p2p /system/bin/dhcpcd -aABKL
     class main
 	user root
 	group net_admin net_raw
@@ -1091,16 +984,6 @@ on property:service.pppoe_wlan0.enable=1
     on property:gsm.sim.ril.testsim.4=1
     write /proc/sys/net/netfilter/nf_conntrack_tcp_no_window_check 1
     write /proc/sys/net/ipv4/tcp_rto_min 400
-
-service DMAgent /system/bin/dm_agent_binder
-    class main
-    user system
-    group system cache
-
-service PPLAgent /system/bin/ppl_agent
-    class main
-    user system
-    group system cache
 
 service vtservice /system/bin/vtservice
     class main
@@ -1201,21 +1084,6 @@ service mnld /system/xbin/mnld
     group gps inet misc sdcard_rw sdcard_r media_rw system
     socket mnld stream 660 gps system
 
-service ipod /system/bin/ipod
-    user root
-    group root
-    disabled
-
-service extmdlogger /system/bin/extmdlogger
-    class main
-    user shell
-    group shell system radio sdcard_rw inet sdcard_r media_rw
-
-service GoogleOtaAgent /system/bin/GoogleOtaBinder
-    class main
-    user system
-    group system
-
 service mdlogger /system/bin/mdlogger
     class main
     user shell
@@ -1288,19 +1156,6 @@ service memsicd3416x /system/bin/memsicd3416x
 	 user system
     group system
     class main
-#dixiaobing@wind-mobi.com 20150710 start     
-service memsicd3524x /system/bin/memsicd3524x
-     disabled
-	 user system
-    group system
-    class main
-     
-service ist8303 /system/bin/ist8303
-    disabled
-    user system
-    group system
-    class main
-#dixiaobing@wind-mobi.com 20150710 end 
 
 service akmd8975 /system/bin/akmd8975
     disabled
@@ -1336,19 +1191,13 @@ service mc6420d /system/bin/mc6420d
     user system
     group system
     class main
+
 service qmc5983d /system/bin/qmc5983d
      disabled
 	 user system
     group system
     class main
-    # yudengwu@wind-mobi.com begin
-service qmcX983d /system/bin/qmcX983d
-     disabled
-	 user system
-    group system
-    class main
-	oneshot
-    # yudengwu@wind-mobi.com end
+
 service orientationd /system/bin/orientationd
     disabled
     user system
@@ -1402,194 +1251,34 @@ service emsvr /system/bin/em_svr
     user root
 
 #
-#emsvr service (end)
+# emsvr service (end)
 #
 
-service shutdown /system/bin/shutdown
-    user root
-    group root
-    disabled
-
-service NvRAMAgent /system/bin/nvram_agent_binder
-    class main
-    user system
-    group system
-
+# Thermal
 service thermal_manager /system/bin/thermal_manager
     class main
     user root
+    group system
     oneshot
-
-service thermal /system/bin/thermal
-    class main
-    user system
-    group system
-
-service thermald /system/bin/thermald
-    class main
-    user system
-    group system
 
 service fuelgauged /system/bin/fuelgauged
     class main
     user system
     group system
-    disabled
 
-service sn /system/bin/sn
-    class late_start
-    user system
-    group system sdcard_r
+service wmtLoader /system/bin/wmt_loader
+    user root
+    group root
+    class core
     oneshot
 
-#add for power-off alarm
-service poad /system/bin/poad
-    class main
+service conn_launcher /system/bin/6620_launcher -p /system/etc/firmware/
     user system
     group system
-    oneshot
-
-#monitor battery status
-service batterywarning /system/bin/batterywarning
-    class main
-    user shell
-    group shell
-
-service backuprestore /system/bin/br_app_data_service
-	class main
-	socket backuprestore stream 0660 root sdcard_rw
-	user root
-
-#service BGW /system/xbin/BGW
-#	user system
-#	group gps system radio
-#	class main
-service MtkCodecService /system/bin/MtkCodecService
-    class main
-    user system
-    group audio media sdcard_r
-
-# GuiExt Server init
-service guiext-server /system/bin/guiext-server
-    class main
-    user system
-    group system graphics
-
-# OperaMax Service
-service OperaMaxSystem /system/bin/OperaMaxSystem
-    socket tunman stream 0666 system system
-    class main
-    disabled
-
-on property:persist.service.operamax=1
-    start OperaMaxSystem
-
-on property:persist.service.operamax=0
-    stop OperaMaxSystem
+    class core
 
 # Charger
 service charger /sbin/healthd -c
     class charger
     critical
     seclabel u:r:healthd:s0
-
-###########add for 3Gdongle
-
-on boot
-#
-# change the right of ip-up ip-down scripts(begin)
-#
-chmod 777 /etc/ppp/ip-up
-chmod 777 /etc/ppp/ip-down
-#
-# change the right of ip-up ip-down scripts(end)
-#
-
-#
-# change the right of ip-up-ppp0 ip-down-ppp0 scripts(begin)
-#
-chmod 777 /etc/ppp/ip-up-ppp0
-chmod 777 /etc/ppp/ip-down-ppp0
-#
-# change the right of ip-up ip-down scripts(end)
-#
-
-#set the property of persiste.radio.reset_on_switch
-setprop persist.radio.reset_on_switch true
-#end
-
-#set the property of rild.mark_switchuser
-setprop rild.mark_switchuser 0
-#end
-
-chmod 0644 /system/lib/libzteevdo-ril.so
-chomd 0644 /system/lib/zterilPara
-chown root /system/bin/pppd
-chmod 4755 /system/bin/pppd
-chown root /system/bin/chat
-chmod 4755 /system/bin/chat
-
-#
-#ril-daemon (begin)
-#
-service ril-3gddaemon /system/bin/rild_dongle
-    class main
-    socket rild-dongle stream 660 root radio
-    socket rild-dongle-debug stream 660 radio radio
-    user root
-    group radio cache inet misc audio log
-    disabled
-
-#
-#ril-daemon (end)
-#
-
-#
-#usbdongled(begin)
-#
-service usbdongled /system/bin/dongled
-    class main
-	user root
-	group radio cache inet misc
-	enabled
-
-
-#
-#usbdongled(end)
-#
-
-#
-# add the service for call pppd(begin)
-#
-service zpppd_gprs /system/bin/init.gprs-pppd
-    user root
-	group radio cache inet misc
-	disabled
-	oneshot
-#
-# add the service for call pppd(end)
-#
-
-service sbchk /system/bin/sbchk
-    class core
-    user system
-    group system
-    oneshot
-
-# Program binary service
-service program_binary /system/bin/program_binary_service
-    class late_start
-    user system
-    group graphics
-    oneshot
-
-# zhouyacheng@wind-mobi.com 2015-6-6 begin
-# for psensor calibration and color id
-service boot_init /system/bin/boot_init
-    disabled
-    oneshot
-
-on property:persist.sys.dalvik.vm.lib.2=*
-    start boot_init
-# zhouyacheng@wind-mobi.com 2015-6-6 end
-
