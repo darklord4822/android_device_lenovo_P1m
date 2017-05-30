@@ -39,7 +39,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.r_submix.default \
-    libaudiopolicymanagerdefault \
+    libaudio-resampler \
     libtinyalsa \
     libtinycompress \
     libtinymix \
@@ -83,18 +83,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
      $(LOCAL_PATH)/configs/agps_profiles_conf2.xml:system/etc/agps_profiles_conf2.xml
 
-# Keylayout
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl \
-    $(LOCAL_PATH)/configs/mtk-tpd.kl:system/usr/keylayout/mtk-tpd.kl \
-    $(LOCAL_PATH)/configs/mtk-tpd-kpd.kl:system/usr/keylayout/mtk-tpd-kpd.kl
-
-# Thermal
-PRODUCT_COPY_FILES += \
-     $(LOCAL_PATH)/configs/thermal.conf:system/etc/.tp/thermal.conf \
-     $(LOCAL_PATH)/configs/thermal.off.conf:system/etc/.tp/thermal.off.conf \
-     $(LOCAL_PATH)/configs/.ht120.mtc:system/etc/.tp/.ht120.mtc \
-
 # Ramdisk
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/root/fstab.mt6735:root/fstab.mt6735 \
@@ -125,25 +113,19 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/permissions/android.hardware.microphone.xml:system/etc/permissions/android.hardware.microphone.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml 
 
-# USB
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp
+    
+PRODUCT_PACKAGES += \
+    librs_jni \
+    com.android.future.usb.accessory
     
 # Charger Mode
 PRODUCT_PACKAGES += \
     charger_res_images
 
-# Torch
-PRODUCT_PACKAGES += \
-    Torch
-
-# FM Radio (disabled in this build)
+# FM Radio
 PRODUCT_PACKAGES += \
     FMRadio \
     libfmjni
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/fmr/mt6627_fm_cust.cfg:system/etc/fmr/mt6627_fm_cust.cfg
 
 # Camera
 PRODUCT_PACKAGES += \
