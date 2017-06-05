@@ -136,6 +136,9 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lenovo/P1m/bluetooth
 # Sensors
 TARGET_NO_SENSOR_PERMISSION_CHECK := true
 
+# Seccomp filter
+BOARD_SECCOMP_POLICY := device/lenovo/P1m/seccomp
+
 # CWM
 TARGET_RECOVERY_FSTAB := device/lenovo/P1m/rootdir/root/recovery.fstab
 BOARD_HAS_NO_SELECT_BUTTON := true
@@ -163,8 +166,5 @@ BOARD_SEPOLICY_DIRS := \
 
 # Use old sepolicy version
 POLICYVERS := 29
-
-# Seccomp filter
-BOARD_SECCOMP_POLICY := $(LOCAL_PATH)/seccomp
 
 TARGET_LDPRELOAD += libxlog.so:libmtk_symbols.so # for symbols in mtkaudio.cpp + mtksymbols

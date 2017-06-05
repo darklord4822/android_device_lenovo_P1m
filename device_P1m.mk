@@ -43,8 +43,7 @@ PRODUCT_PACKAGES += \
     libtinyalsa \
     libtinycompress \
     libtinymix \
-    libtinyxml \
-    libfs_mgr
+    libtinyxml
 
 # Media
 PRODUCT_COPY_FILES += \

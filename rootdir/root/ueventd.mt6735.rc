@@ -25,8 +25,8 @@
 /dev/stpbt                0660   bluetooth  net_bt_stack
 
 # GPS
-/dev/stpgps               0660   gps        gps
-/dev/gps                  0660   gps        system
+/dev/stpgps               0660   gps         gps
+/dev/gps                  0660   gps         system
 
 # ANT
 /dev/stpant               0660   system     system
@@ -35,7 +35,7 @@
 /dev/wmtWifi              0660   system     system
 
 # FMRadio
-/dev/fm                   0660   media     media
+/dev/fm			          0660   system	   media
 
 # NFC
 /dev/msr3110              0666   root       root
