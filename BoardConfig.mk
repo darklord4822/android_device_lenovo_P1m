@@ -104,6 +104,9 @@ MTK_HARDWARE := true
 BOARD_USES_CYANOGEN_HARDWARE := true
 BOARD_HARDWARE_CLASS := device/lenovo/P1m/cmhw
 
+# Fix video autoscaling on old OMX decoders
+TARGET_OMX_LEGACY_RESCALING:=true
+
 # Charger
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 HEALTHD_BACKLIGHT_LEVEL := 50
