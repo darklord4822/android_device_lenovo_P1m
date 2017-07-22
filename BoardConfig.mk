@@ -80,7 +80,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 TARGET_KMODULES := true
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := Lenovo P1ma40
+TARGET_OTA_ASSERT_DEVICE := Lenovo P1ma40,P1m
 
 #COMMON_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
@@ -106,6 +106,7 @@ BOARD_HARDWARE_CLASS := device/lenovo/P1m/cmhw
 
 # Charger
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
+HEALTHD_BACKLIGHT_LEVEL := 50
 
 # SU
 WITH_SU := true
@@ -135,9 +136,6 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lenovo/P1m/bluetooth
 
 # Sensors
 TARGET_NO_SENSOR_PERMISSION_CHECK := true
-
-# Seccomp filter
-BOARD_SECCOMP_POLICY := device/lenovo/P1m/seccomp
 
 # CWM
 TARGET_RECOVERY_FSTAB := device/lenovo/P1m/rootdir/root/recovery.fstab

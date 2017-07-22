@@ -66,6 +66,7 @@ service ril-daemon-mtk /system/bin/mtkrild
     group radio cache inet misc audio sdcard_r sdcard_rw log system
     disabled
     oneshot
+    seclabel u:r:ril-daemon-mtk:s0
 
 service ril-daemon-mtkmd2 /system/bin/mtkrildmd2
     class core
@@ -96,16 +97,18 @@ service ccci_fsd /system/bin/ccci_fsd 0
     oneshot
 
 service ccci_mdinit /system/bin/ccci_mdinit 0
-    user system
-    group radio system
+    user root
+    group root radio system
     class core
     oneshot
+	seclabel u:r:ccci_mdinit:s0
 
 service ccci_rpcd /system/bin/ccci_rpcd 0
     user radio
     group radio cache inet misc
     class core
     oneshot
+    seclabel u:r:ccci_fsd:s0
 
 #
 #
@@ -120,3 +123,4 @@ service terservice /system/bin/terservice
 
 on property:ril.muxreport=1
     start muxreport-daemon
+
