@@ -1,9 +1,9 @@
-From 254033d03432e1e965ac6095d16298c67fdf1b8b Mon Sep 17 00:00:00 2001
-From: DeckerSU <support@decker.su>
-Date: Sun, 19 Feb 2017 02:57:41 +0300
-Subject: [PATCH 2/2] add mtk color format support
+From aeb3913e7cb56b1dd3f0f1f6e1bfd1680da6c584 Mon Sep 17 00:00:00 2001
+From: darklord4822 <darklord4722@gmail.com>
+Date: Tue, 25 Jul 2017 18:25:50 +0000
+Subject: [PATCH] 0009-add-mtk-color-format-support.patch
 
-Change-Id: I99c1d50bf4cc67f4723f8afed3404670bea01f47
+Change-Id: Iaf153078f4727980189f5f740dbf6656ffa51b59
 ---
  include/camera/MtkCamera.h                         |  275 ++
  include/camera/MtkCameraParameters.h               |  364 ++
@@ -11,13 +11,13 @@ Change-Id: I99c1d50bf4cc67f4723f8afed3404670bea01f47
  include/media/stagefright/ColorConverter.h         |    4 +
  .../media/stagefright/dpframework/DpBlitStream.h   |  243 ++
  include/media/stagefright/dpframework/DpDataType.h |  450 ++
- media/libstagefright/ACodec.cpp                    |   40 +
+ media/libstagefright/ACodec.cpp                    |   46 +
  media/libstagefright/Android.mk                    |   11 +
  media/libstagefright/CameraSource.cpp              |    8 +
  media/libstagefright/OMXCodec.cpp                  | 4549 ++++++++++++++++++++
  media/libstagefright/colorconversion/Android.mk    |    7 +
  .../colorconversion/ColorConverter.cpp             |  105 +
- 12 files changed, 6059 insertions(+)
+ 12 files changed, 6065 insertions(+)
  create mode 100644 include/camera/MtkCamera.h
  create mode 100644 include/camera/MtkCameraParameters.h
  create mode 100644 include/media/stagefright/dpframework/DpBlitStream.h
@@ -1410,10 +1410,10 @@ index 0000000..d858e97
 +
 +#endif  // __DP_DATA_TYPE_H__
 diff --git a/media/libstagefright/ACodec.cpp b/media/libstagefright/ACodec.cpp
-index 7aaa1e6..c24c05f 100644
+index 92e2847..58cdbbf 100644
 --- a/media/libstagefright/ACodec.cpp
 +++ b/media/libstagefright/ACodec.cpp
-@@ -85,6 +85,16 @@
+@@ -85,6 +85,17 @@
  
  #include <stagefright/AVExtensions.h>
  
@@ -1422,6 +1422,7 @@ index 7aaa1e6..c24c05f 100644
 +
 +#define HAL_PIXEL_FORMAT_NV12_BLK 0x7F000001
 +#define HAL_PIXEL_FORMAT_I420 (0x32315659 + 0x10)
++#define HAL_PIXEL_FORMAT_YUV_PRIVATE (0x32315659 + 0x20)
 +
 +const OMX_COLOR_FORMATTYPE OMX_MTK_COLOR_FormatYV12 = (OMX_COLOR_FORMATTYPE)0x7F000200;
 +const OMX_COLOR_FORMATTYPE OMX_COLOR_FormatVendorMTKYUV = (OMX_COLOR_FORMATTYPE)0x7F000001;
@@ -1430,7 +1431,7 @@ index 7aaa1e6..c24c05f 100644
  namespace android {
  
  enum {
-@@ -1036,6 +1046,11 @@ status_t ACodec::setupNativeWindowSizeFormatAndUsage(
+@@ -1036,6 +1047,11 @@ status_t ACodec::setupNativeWindowSizeFormatAndUsage(
      setNativeWindowColorFormat(eNativeColorFormat);
  #endif
  
@@ -1442,7 +1443,7 @@ index 7aaa1e6..c24c05f 100644
      ALOGV("gralloc usage: %#x(OMX) => %#x(ACodec)", omxUsage, usage);
      err = setNativeWindowSizeFormatAndUsage(
              nativeWindow,
-@@ -1043,6 +1058,8 @@ status_t ACodec::setupNativeWindowSizeFormatAndUsage(
+@@ -1043,6 +1059,8 @@ status_t ACodec::setupNativeWindowSizeFormatAndUsage(
              def.format.video.nFrameHeight,
  #ifdef USE_SAMSUNG_COLORFORMAT
              eNativeColorFormat,
@@ -1451,13 +1452,13 @@ index 7aaa1e6..c24c05f 100644
  #else
              def.format.video.eColorFormat,
  #endif
-@@ -1433,6 +1450,29 @@ void ACodec::setNativeWindowColorFormat(OMX_COLOR_FORMATTYPE &eNativeColorFormat
+@@ -1433,6 +1451,34 @@ void ACodec::setNativeWindowColorFormat(OMX_COLOR_FORMATTYPE &eNativeColorFormat
  }
  #endif
  
 +#ifdef MTK_HARDWARE
 +void ACodec::setHalWindowColorFormat(OMX_COLOR_FORMATTYPE &eHalColorFormat) {
-+    ALOGE("[Decker] setHalWindowColorFormat(%#x) - %s",eHalColorFormat,mComponentName.c_str());
++    ALOGE("setHalWindowColorFormat(%#x) - %s",eHalColorFormat,mComponentName.c_str());
 +
 +    if (!strncmp("OMX.MTK.", mComponentName.c_str(), 8)) {
 +        switch (eHalColorFormat) {
@@ -1471,7 +1472,12 @@ index 7aaa1e6..c24c05f 100644
 +                eHalColorFormat = (OMX_COLOR_FORMATTYPE)HAL_PIXEL_FORMAT_NV12_BLK;
 +                break;
 +            default:
++		if (!strcasecmp(mComponentName.c_str(), "OMX.MTK.VIDEO.DECODER.VP9")) {
++			ALOGE("OMX.MTK.VIDEO.DECODER.VP9 detected ... change Hal Color Format ...");
++			eHalColorFormat = (OMX_COLOR_FORMATTYPE)HAL_PIXEL_FORMAT_YUV_PRIVATE;
++		} else
 +                eHalColorFormat = (OMX_COLOR_FORMATTYPE)HAL_PIXEL_FORMAT_I420;
++
 +                break;
 +        }
 +    }
@@ -1482,10 +1488,10 @@ index 7aaa1e6..c24c05f 100644
      CHECK_EQ((int)info->mStatus, (int)BufferInfo::OWNED_BY_US);
  
 diff --git a/media/libstagefright/Android.mk b/media/libstagefright/Android.mk
-index 9fcb299..754d0b6 100644
+index e708f68..322253c 100644
 --- a/media/libstagefright/Android.mk
 +++ b/media/libstagefright/Android.mk
-@@ -198,6 +198,17 @@ LOCAL_C_INCLUDES += \
+@@ -202,6 +202,17 @@ LOCAL_C_INCLUDES += \
  	$(TOP)/hardware/samsung/exynos4/include
  endif
  
@@ -1504,7 +1510,7 @@ index 9fcb299..754d0b6 100644
  
  LOCAL_MODULE_TAGS := optional
 diff --git a/media/libstagefright/CameraSource.cpp b/media/libstagefright/CameraSource.cpp
-index b51a7b8..7d41710 100644
+index bb4ea41..9a4f0e6 100644
 --- a/media/libstagefright/CameraSource.cpp
 +++ b/media/libstagefright/CameraSource.cpp
 @@ -44,6 +44,10 @@
@@ -6239,5 +6245,5 @@ index 3ca7cc0..a2d42a4 100644
 +
  }  // namespace android
 -- 
-2.7.4
+1.9.1
 

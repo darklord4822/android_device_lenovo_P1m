@@ -20,4 +20,4 @@ PRODUCT_MODEL := Lenovo P1m
 PRODUCT_MANUFACTURER := lenovo
 
 # Available languages
-PRODUCT_LOCALES := en_US en_GB ru_RU
+PRODUCT_LOCALES := en_US en_GB ru_RU uk_UA tr_TR sk_SK
