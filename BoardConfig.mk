@@ -32,10 +32,6 @@ TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
 
-# Без нижеследующих трех строк 64-битные компоненты соберутся, однако при старте прошивки все равно
-# будут использоваться 32-битные бинарники. Например, Antutu Benchmark будет отображать 
-# прошивку как 32-битную.
-
 TARGET_CPU_ABI_LIST_64_BIT := $(TARGET_CPU_ABI)
 TARGET_CPU_ABI_LIST_32_BIT := $(TARGET_2ND_CPU_ABI),$(TARGET_2ND_CPU_ABI2)
 TARGET_CPU_ABI_LIST := $(TARGET_CPU_ABI_LIST_64_BIT),$(TARGET_CPU_ABI_LIST_32_BIT)
@@ -82,17 +78,19 @@ TARGET_KMODULES := true
 # Assert
 TARGET_OTA_ASSERT_DEVICE := Lenovo P1ma40,P1m
 
-#COMMON_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
-TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
-
 # Disable memcpy opt (for audio libraries)
 TARGET_CPU_MEMCPY_OPT_DISABLE := true
 
-# EGL
+# Graphics
 BOARD_EGL_CFG := device/lenovo/P1m/configs/egl.cfg
-USE_OPENGL_RENDERER := true
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
-TARGET_REQUIRES_SYNCHRONOUS_SETSURFACE := true
+USE_OPENGL_RENDERER := true
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
+TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
+TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
+MTK_HWC_SUPPORT := yes
+MTK_HWC_VERSION := 1.4.1
+MTK_GPU_VERSION := mali midgard r7p0
 
 # MTK Hardware
 BOARD_HAS_MTK_HARDWARE := true
@@ -111,10 +109,6 @@ TARGET_CAMERASERVICE_CLOSES_NATIVE_HANDLES := true
 
 # Charger
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
-HEALTHD_BACKLIGHT_LEVEL := 50
-
-# SU
-WITH_SU := true
 
 # RIL
 BOARD_RIL_CLASS := ../../../device/lenovo/P1m/ril/
