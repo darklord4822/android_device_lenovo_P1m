@@ -1,15 +1,22 @@
-## LineageOS 14.1 for Lenovo P1m
-ветка LineageOS 14.1 (CM14.1) для Lenovo P1m.
+Device Tree for Lenovo P1m
+===========================================
 
-На данный момент в этом дереве работает:
-* GPS (огромное спасибо [danielhk](https://github.com/danielhk)  за его код GPS HAL)
-* Запись видео с камеры (!), правда доступны всего два разрешения - 1080p и 720p, плюс при записи с фронтальной камеры видео записывается поврежденным. Однако при этом аппаратные OMX кодеки полностью работают (!), для записи видео с фронтальной камеры можно установить стороннее приложение, например, Open Camera, CameraMX и т.п.
-* Bluetooth (проверялась только передача файлов между устройствами, профиль гарнитуры проверить, к сожалению, не на чем)
-* WiFi (работает как соединение с сетью, так и создание WiFi AP на 2.4 GHz)
+The Lenovo P1m (codenamed _"P1m"_) is a mid-range smartphone from Lenovo.
 
-Ну и собственно все остальное. Фактически это первый мой билд Android 7.1.1 / CM14 / LineageOS в котором работает всё или практически всё.
+Basic   | Spec Sheet
+-------:|:-------------------------
+CPU     | Quad-core 1.0 GHz Cortex-A53
+Chipset | MediaTek MT6735P
+GPU     | Mali-T720
+Memory  | 2GB RAM
+Shipped Android Version | 5.1, 6.0
+Storage | 16GB
+MicroSD | Up to 64GB
+Battery | Li-Pol 4000mAh battery
+Display | 720 x 1280 pixels, 5.0 inches
+Camera  | Main 8MP / Front 5MP, autofocus, LED flash
 
+Copyright 2017 - The LineageOS Project.
+Thanks to igor1144, olegsvs, Decker, danielhk, Zormax, SRT.
 
-
-
-
+![Lenovo P1m](https://camo.githubusercontent.com/b73c187eb1ca7bd6ffb4ea0469f1d5b094a5c188/687474703a2f2f7777772e736d61727467697a6d6f2e6e65742f77702d636f6e74656e742f75706c6f6164732f323031352f31302f4c656e6f766f2d564942452d50316d2d312e6a7067 "Lenovo P1m")
