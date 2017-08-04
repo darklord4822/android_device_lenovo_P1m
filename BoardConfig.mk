@@ -107,6 +107,7 @@ BOARD_HARDWARE_CLASS := device/lenovo/P1m/cmhw
 
 # Fix video autoscaling on old OMX decoders
 TARGET_OMX_LEGACY_RESCALING := true
+TARGET_CAMERASERVICE_CLOSES_NATIVE_HANDLES := true
 
 # Charger
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness

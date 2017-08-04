@@ -107,29 +107,27 @@
 <spnOverride numeric="24801" spn="EMT"/>
 <spnOverride numeric="24802" spn="EE elisa"/>
 <spnOverride numeric="24803" spn="Tele2 EE"/>
-<spnOverride numeric="25011" spn="ROSTELECOM"/>
-<spnOverride numeric="25012" spn="ROSTELECOM"/>
-<spnOverride numeric="25019" spn="RUS INDIGO"/>
-<spnOverride numeric="25035" spn="MOTIV"/>
-<spnOverride numeric="25002" spn="MegaFon RUS"/>
-<spnOverride numeric="25001" spn="MTS-RUS"/>
-<spnOverride numeric="25003" spn="ROSTELECOM"/>
-<spnOverride numeric="25017" spn="ROSTELECOM"/>
-<spnOverride numeric="25038" spn="ROSTELECOM"/>
-<spnOverride numeric="25039" spn="ROSTELECOM"/>
+<spnOverride numeric="25001" spn="MTS"/>
+<spnOverride numeric="25004" spn="MTS"/>
+<spnOverride numeric="25005" spn="MTS"/>
+<spnOverride numeric="25010" spn="MTS"/>
+<spnOverride numeric="25013" spn="MTS"/>
+<spnOverride numeric="25039" spn="MTS"/>
+<spnOverride numeric="25092" spn="MTS"/>
+<spnOverride numeric="25093" spn="MTS"/>
+<spnOverride numeric="25002" spn="MegaFon"/>
+<spnOverride numeric="25011" spn="Yota"/>
+<spnOverride numeric="25012" spn="BWC"/>
+<spnOverride numeric="25020" spn="TELE2"/>
+<spnOverride numeric="25044" spn="Beeline"/>
 <spnOverride numeric="25099" spn="Beeline"/>
-<spnOverride numeric="25016" spn="NTC"/>
-<spnOverride numeric="25007" spn="RUS 07, RUS SMARTS"/>
-<spnOverride numeric="25015" spn="RUS15, RUS SMARTS"/>
-<spnOverride numeric="25020" spn="TELE2 RU"/>
-<spnOverride numeric="25005" spn="ROSTELECOM"/>
 <spnOverride numeric="25037" spn="KODOTEL"/>
-<spnOverride numeric="25506" spn="life:)"/>
+<spnOverride numeric="25506" spn="Lifecell"/>
 <spnOverride numeric="25505" spn="UA-GT"/>
-<spnOverride numeric="25502" spn="Beeline UA"/>
-<spnOverride numeric="25503" spn="UA-KYIVSTAR"/>
-<spnOverride numeric="25501" spn="MTS UKR"/>
-<spnOverride numeric="25507" spn="TriMob"/>
+<spnOverride numeric="25502" spn="Beeline"/>
+<spnOverride numeric="25503" spn="Kyivstar"/>
+<spnOverride numeric="25501" spn="Vodafone"/>
+<spnOverride numeric="25507" spn="3Mob"/>
 <spnOverride numeric="25704" spn="life:) BY"/>
 <spnOverride numeric="25702" spn="MTS BY"/>
 <spnOverride numeric="25701" spn="BY VELCOM"/>
@@ -308,6 +306,7 @@
 <spnOverride numeric="33403" spn="movistar"/>
 <spnOverride numeric="334030" spn="movistar"/>
 <spnOverride numeric="334020" spn="TELCEL"/>
+<spnOverride numeric="334050" spn="UNEFON"/>
 <spnOverride numeric="334050" spn="Iusacell"/>
 <spnOverride numeric="334090" spn="Nextel"/>
 <spnOverride numeric="33420" spn="TELCEL"/>

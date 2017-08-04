@@ -303,7 +303,7 @@
         available value: true (default), false
 
     e911_open_gps:
-        enable/disable opening GPS icon when E911 call is dialed
+        enable/disable opening GPS earlier when E911 call is dialed
   -->
   <agps_setting
     agps_enable="true"
@@ -377,6 +377,10 @@
         specify the LPP payload in the EPC-MOLR message in hexString format (ex: "010203ff" = { 0x01, 0x02, 0x03, 0xff }
         the purpose of this parameter is used for LAB testing only, please do not change it.
 
+    reject_non911_nilr_enable:
+        enable/disable to reject non911 NILR request
+        available value: true, false (default)
+
   -->
   <cp_setting
     molr_pos_method="0"
@@ -387,6 +391,7 @@
     cp_auto_reset="false"
     epc_molr_lpp_payload_enable="false"
     epc_molr_lpp_payload="D2000010237B2026404FB8007202BFFFFFFFF80000000020C0000100940FB9001202B7FFFFF8000000000061800002018A00"
+    reject_non911_nilr_enable="false"
   />
 
   <!-- up_setting
@@ -511,6 +516,9 @@
         Service Indicator of SUPL version for ULP
         available value: 0~255, default value is 0
         choosable value in LocationEM: 0~5
+    tls_reuse_enable:
+        enable/disable tls session reuse mode
+        available value: true, false (default)
   -->
   <up_setting
     ca_enable="false"
@@ -545,6 +553,7 @@
     no_sensitive_log="false"
     supl_ver_minor="0"
     supl_ver_ser_ind="0"
+    tls_reuse_enable="false"
   />
 
 </mtk_agps_profiles>
