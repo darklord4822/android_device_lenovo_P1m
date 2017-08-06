@@ -18,7 +18,7 @@ git apply -v ../../device/lenovo/P1m/patches/0008-Partial-Revert-Camera1-API-Sup
 git apply -v ../../device/lenovo/P1m/patches/0009-add-mtk-color-format-support.patch
 git apply -v ../../device/lenovo/P1m/patches/0013-fix_video_autoscaling.patch
 cd ../..
-cd system/netd
-git apply -v ../../device/lenovo/P1m/patches/0010-wifi-tethering-fix.patch
-cd ../..
+#cd system/netd
+#git apply -v ../../device/lenovo/P1m/patches/0010-wifi-tethering-fix.patch
+#cd ../..
 
