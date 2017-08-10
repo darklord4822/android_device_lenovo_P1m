@@ -17,6 +17,8 @@
 /system/bin/slpd                                                u:object_r:slpd_exec:s0
 /system/bin/terservice                                          u:object_r:terservice_exec:s0
 /system/bin/thermal_manager                                     u:object_r:thermal_manager_exec:s0
+/system/bin/tune2fs                                             u:object_r:system_file:s0
+/system/bin/em_svr                                              u:object_r:system_file:s0
 /system/bin/mtkrild                                             u:object_r:ril-daemon-mtk_exec:s0
 /system/bin/wifi2agps                                           u:object_r:wifi2agps_exec:s0
 /system/bin/wmt_loader                                          u:object_r:wmt_loader_exec:s0
@@ -27,7 +29,9 @@
 /system/bin/memsicd3416x                                        u:object_r:memsicd3416x_exec:s0
 /system/bin/memsicd3524x                                        u:object_r:memsicd3524x_exec:s0
 /system/bin/qmcX983d                                            u:object_r:qmcX983d_exec:s0
-#/system/bin/guiext-server                                       u:object_r:guiext-server_exec:s0
+/system/bin/geomagneticd                                        u:object_r:geomagneticd_exec:s0
+/system/bin/orientationd                                        u:object_r:orientationd_exec:s0
+/system/bin/mc6470d                                             u:object_r:mc6470d_exec:s0
 
 # Meta mode
 /sbin/multi_init                                                u:object_r:init_exec:s0
@@ -64,6 +68,8 @@
 /dev/ccci.*                                                     u:object_r:ccci_device:s0
 /dev/gsensor(/.*)?                                              u:object_r:gsensor_device:s0
 /dev/msensor(/.*)?                                              u:object_r:msensor_device:s0
+/dev/mcube(/.*)?                                                u:object_r:mcube_device:s0
+/dev/gyroscope(/.*)? 					        	            u:object_r:gyroscope_device:s0
 /dev/stpgps(/.*)?                                               u:object_r:stpgps_device:s0
 /dev/stpwmt(/.*)?                                               u:object_r:stpwmt_device:s0
 /dev/wmtdetect                                                  u:object_r:wmtdetect_device:s0
@@ -120,3 +126,4 @@
 /data/mdl(/.*)?                                                 u:object_r:mdlog_data_file:s0
 /data/ccci_cfg(/.*)?                                            u:object_r:ccci_cfg_file:s0
 /data/.tp(/.*)?                                                 u:object_r:thermal_manager_data_file:s0
+/data/fuelgauge_datalog.txt                                     u:object_r:fuelgauge_data_file:s0

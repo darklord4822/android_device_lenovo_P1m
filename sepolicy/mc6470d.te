@@ -1,0 +1,29 @@
+# ==============================================
+# Policy File of /system/binmc6470d Executable File 
+
+
+# ==============================================
+# Type Declaration
+# ==============================================
+
+type mc6470d_exec , exec_type, file_type;
+type mc6470d ,domain, domain_deprecated;
+allow mc6470d msensor_device:chr_file rw_file_perms;
+allow mc6470d gsensor_device:chr_file rw_file_perms;
+allow mc6470d mcube_device:chr_file rw_file_perms;
+
+# ==============================================
+# Android Policy Rule
+# ==============================================
+
+# ==============================================
+# NSA Policy Rule
+# ==============================================
+
+# ==============================================
+# MTK Policy Rule
+# ==============================================
+
+#permissive mc6470d;
+init_daemon_domain(mc6470d)
+#unconfined_domain(mc6470d)

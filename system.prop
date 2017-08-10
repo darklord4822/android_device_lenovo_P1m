@@ -14,14 +14,18 @@ mediatek.wlan.ctia=0
 wifi.tethering.interface=ap0
 wifi.direct.interface=p2p0
 
-ro.opengles.version=196608
-
 # Audio
 ro.camera.sound.forced=0
 ro.audio.silent=0
 
-# temporary enables NAV bar (soft keys)
+# Display
+ro.sf.lcd_density=320
 # qemu.hw.mainkeys=0
+ro.opengles.version=196609
+persist.sys.force_highendgfx=true
+
+# Power off opt in IPO
+sys.ipo.pwrdncap=2
 
 # Kernel
 ro.zygote.preload.enable=0
@@ -30,15 +34,13 @@ ro.kernel.zio=38,108,105,16
 # Disable dirty region for Mali
 debug.hwui.render_dirty_regions=false
 
-ro.sf.lcd_density=320
-
 # Performance
 ro.mtk_perf_simple_start_win=1
 ro.mtk_perf_fast_start_win=1
 ro.mtk_perf_response_time=1
-persist.sys.timezone = Europe/Moscow
+dalvik.vm.checkjni=false
 
-#persist.sys.isUsbOtgEnabled=true
+persist.sys.timezone = Europe/Moscow
 
 ro.mtk_perfservice_support=1
 ro.telephony.default_network=9

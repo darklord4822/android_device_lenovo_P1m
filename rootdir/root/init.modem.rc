@@ -1,6 +1,13 @@
 on post-fs-data
     # Modem related device nodes
-    mkdir /data/nvram/md 0770 root system
+    mkdir /data/nvram/md  0770 root system
+
+    chown radio radio /sys/kernel/ccci/boot
+
+    mkdir /data/ccci_cfg 0770 system radio
+
+    mkdir /data/mdlog 0775 shell system
+
     chown radio radio /sys/kernel/ccci/boot
     chown radio radio /dev/ccci_fs
     chown radio radio /dev/ccci_ioctl0
@@ -66,7 +73,6 @@ service ril-daemon-mtk /system/bin/mtkrild
     group radio cache inet misc audio sdcard_r sdcard_rw log system
     disabled
     oneshot
-    seclabel u:r:ril-daemon-mtk:s0
 
 service ril-daemon-mtkmd2 /system/bin/mtkrildmd2
     class core
@@ -97,18 +103,16 @@ service ccci_fsd /system/bin/ccci_fsd 0
     oneshot
 
 service ccci_mdinit /system/bin/ccci_mdinit 0
-    user root
-    group root radio system
+    user system
+    group radio system
     class core
     oneshot
-	seclabel u:r:ccci_mdinit:s0
 
 service ccci_rpcd /system/bin/ccci_rpcd 0
     user radio
     group radio cache inet misc
     class core
     oneshot
-    seclabel u:r:ccci_fsd:s0
 
 #
 #
@@ -123,4 +127,14 @@ service terservice /system/bin/terservice
 
 on property:ril.muxreport=1
     start muxreport-daemon
+
+service stop_modem /system/bin/md_ctrl 0
+    class main
+    disabled
+    oneshot
+
+service start_modem /system/bin/md_ctrl 1
+    class main
+    disabled
+    oneshot
 

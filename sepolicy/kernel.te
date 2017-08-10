@@ -4,3 +4,5 @@ allow kernel self:capability dac_override;
 allow kernel wifi_data_file:dir search;
 allow kernel wifi_data_file:file r_file_perms;
 
+allow kernel fuelgauge_data_file:dir rw_file_perms;
+allow kernel fuelgauge_data_file:file rw_file_perms;
