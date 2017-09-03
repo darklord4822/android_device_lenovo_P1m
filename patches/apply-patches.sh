@@ -12,11 +12,13 @@ cd system/sepolicy
 git apply -v ../../device/lenovo/P1m/patches/0003-Revert-back-to-policy-version-29.patch
 cd ../..
 cd frameworks/av
-git apply -v ../../device/lenovo/P1m/patches/0006-fix-access-wvm-to-ReadOptions.patch
-git apply -v ../../device/lenovo/P1m/patches/0007-Disable-usage-of-get_capture_position.patch
-git apply -v ../../device/lenovo/P1m/patches/0008-Partial-Revert-Camera1-API-Support-SW-encoders-for-n.patch
-git apply -v ../../device/lenovo/P1m/patches/0009-add-mtk-color-format-support.patch
-git apply -v ../../device/lenovo/P1m/patches/0013-fix_video_autoscaling.patch
+git apply -v ../../device/lenovo/P1m/patches/frameworks_av.patch
+cd ../..
+cd frameworks/native
+git apply -v ../../device/lenovo/P1m/patches/frameworks_native.patch
+cd ../..
+cd frameworks/base
+git apply -v ../../device/lenovo/P1m/patches/frameworks_base.patch
 cd ../..
 cd system/netd
 git apply -v ../../device/lenovo/P1m/patches/0010-wifi-tethering-fix.patch

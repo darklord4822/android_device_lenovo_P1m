@@ -18,6 +18,11 @@ wifi.direct.interface=p2p0
 ro.camera.sound.forced=0
 ro.audio.silent=0
 
+# Media / DRM
+drm.service.enabled=true
+ro.mtk_oma_drm_support=1
+ro.mtk_widevine_drm_l3_support=1
+
 # Display
 ro.sf.lcd_density=320
 # qemu.hw.mainkeys=0

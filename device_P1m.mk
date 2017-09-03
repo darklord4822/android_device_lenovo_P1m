@@ -21,6 +21,15 @@ ro.mtk_gps_support=1 \
 ro.mtk_agps_app=1 \
 persist.sys.display.clearMotion=0 
 
+# build.prop
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.stagefright.legacyencoder=true \
+    media.stagefright.less-secure=true \
+    persist.service.adb.enable=1 \
+    persist.service.debuggable=1 \
+    persist.sys.root_access=0 \
+    ro.sys.fw.bg_apps_limits=5
+
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
