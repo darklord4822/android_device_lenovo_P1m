@@ -28,6 +28,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.service.debuggable=1 \
     persist.sys.root_access=0 \
     ro.sys.fw.bg_apps_limits=5
+    
+# Log control prop
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.ril.log=0 \
+    ro.disable.xlog=0
 
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
