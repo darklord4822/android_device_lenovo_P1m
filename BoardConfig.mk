@@ -76,7 +76,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 TARGET_KMODULES := true
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := Lenovo P1ma40,P1m
+TARGET_OTA_ASSERT_DEVICE := Lenovo P1ma40,P1m,P1ma40
 
 # Disable memcpy opt (for audio libraries)
 TARGET_CPU_MEMCPY_OPT_DISABLE := true
